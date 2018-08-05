@@ -10,6 +10,16 @@ RUN apk add -U autoconf automake bash cmake make
 
 CMD /bin/bash
 
+FROM rust-build-deps AS rust-build
+
+ADD Cargo.toml Cargo.lock /data-server/
+
+RUN cargo fetch
+
+ADD . /data-server/.
+
+RUN cargo build
+
 FROM base
 
 COPY --from=rust-build /data-server /data-server
