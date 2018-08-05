@@ -1,0 +1,13 @@
+#!/bin/bash
+
+root="$(readlink -f $(dirname "$0")/..)"
+
+>&2 echo "Building development base image from ${root}..."
+
+docker build --tag frogpond/data-server:devel --target rust-build-deps "$root"
+
+>&2 echo "Entering development environment..."
+
+docker run --rm -v "${root}:/data-server" -it frogpond/data-server:devel $@
+
+>&2 echo "Exited."
