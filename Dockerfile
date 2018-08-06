@@ -30,4 +30,4 @@ FROM base
 
 COPY --from=rust-build /data-server/target/release/ /data-server/
 
-CMD ['/data-server/fp-ds']
+CMD ["/data-server/fp-ds"]
