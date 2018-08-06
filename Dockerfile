@@ -18,11 +18,13 @@ FROM rust-build-deps AS rust-build
 
 ADD Cargo.toml Cargo.lock /data-server/
 
-RUN cargo fetch
+ENV CARGO_HOME /root/.cargo
+
+RUN PATH="$CARGO_HOME/bin:${PATH}" cargo fetch
 
 ADD . /data-server/.
 
-RUN cargo build
+RUN PATH="$CARGO_HOME/bin:${PATH}" cargo install
 
 FROM base
 
