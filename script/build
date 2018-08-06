@@ -1,0 +1,7 @@
+#!/bin/bash
+
+root="$(readlink -f $(dirname "$0")/..)"
+
+>&2 echo "Building ${root}..."
+
+docker build --tag frogpond/data-server:local "$root"
