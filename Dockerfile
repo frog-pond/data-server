@@ -28,4 +28,6 @@ RUN PATH="$CARGO_HOME/bin:${PATH}" cargo install
 
 FROM base
 
-COPY --from=rust-build /data-server /data-server
+COPY --from=rust-build /data-server/target/release/ /data-server/
+
+CMD ['/data-server/fp-ds']
