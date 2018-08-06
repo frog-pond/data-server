@@ -24,7 +24,7 @@ RUN PATH="$CARGO_HOME/bin:${PATH}" cargo fetch
 
 ADD . /data-server/.
 
-RUN PATH="$CARGO_HOME/bin:${PATH}" cargo install
+RUN PATH="$CARGO_HOME/bin:${PATH}" cargo install --path .
 
 FROM base
 
