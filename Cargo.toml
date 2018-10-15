@@ -4,9 +4,9 @@ publish = false
 version = "0.0.0-alpha.0"
 
 [dependencies]
-git2 = "^0.7"
-rocket = "^0.3"
-serde = "^1.0"
+git2 = "0.7"
+rocket = "0.3"
+serde = "1.0"
 
 [[bin]]
 name = "fp-ds"
