@@ -1,0 +1,6 @@
+pool:
+  vmImage: 'Ubuntu 18.04'
+
+steps:
+- script: docker build .
+  displayName: 'docker build'
