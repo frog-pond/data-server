@@ -7,3 +7,4 @@ jobs:
     steps:
       - run: rustup nightly
       - checkout
+      - run: cargo build
