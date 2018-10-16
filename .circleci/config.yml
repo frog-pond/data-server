@@ -4,6 +4,13 @@ x-defs:
 
 version: 2
 jobs:
+  fetch-deps:
+    docker: *rust_docker
+    steps:
+      - run: rustup default nightly
+      - checkout
+      - run: cargo fetch
+
   test:
     docker: *rust_docker
     steps:
