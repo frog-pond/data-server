@@ -44,6 +44,7 @@ jobs:
   docker-build:
     docker: [{image: "docker:stable"}]
     steps:
+      - setup_remote_docker
       - checkout
       - restore_cache:
           keys:
