@@ -1,13 +1,33 @@
 ---
+x-defs:
+  default_docker: &rust_docker [{image: circleci/rust:1.29}]
+
 version: 2
 jobs:
-  build:
-    docker:
-      - image: circleci/rust:1.29
+  test:
+    docker: *rust_docker
     steps:
       - run: rustup default nightly
       - checkout
-      - run: cargo build
       - run: cargo test
+
+  rustfmt:
+    docker: *rust_docker
+    steps:
+      - run: rustup default nightly
+      - checkout
       - run: rustup component add rustfmt-preview --toolchain nightly
       - run: cargo fmt --all -- --check
+
+
+workflows:
+  version: 2
+  general:
+    jobs:
+      - rustfmt
+      - test
+
+
+
+# TODO nightly after rust nightlies get published
+# e.g. 4am
