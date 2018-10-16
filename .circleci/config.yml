@@ -9,17 +9,30 @@ jobs:
     steps:
       - checkout
       - run: cargo fetch
+      - save_cache:
+          key: ds-v1-docker--{{ arch }}-{{ .Branch }}-{{ epoch }}
+          paths:
+            - "~/.cargo"
+            - "./target"
 
   test:
     docker: *rust_docker
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - ds-v1-docker--{{ arch }}-{{ .Branch }}-{{ epoch }}
+            - ds-v1-docker--{{ arch }}-{{ .Branch }}-
       - run: cargo test
 
   rustfmt:
     docker: *rust_docker
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - ds-v1-docker--{{ arch }}-{{ .Branch }}-{{ epoch }}
+            - ds-v1-docker--{{ arch }}-{{ .Branch }}-
       - run: rustup component add rustfmt-preview --toolchain nightly
       - run: cargo fmt --all -- --check
 
@@ -27,6 +40,10 @@ jobs:
     docker: *rust_docker
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - ds-v1-docker--{{ arch }}-{{ .Branch }}-{{ epoch }}
+            - ds-v1-docker--{{ arch }}-{{ .Branch }}-
       - run: cargo build -j2 --release
 
 workflows:
