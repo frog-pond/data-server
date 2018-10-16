@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/rust
+      - image: circleci/rust:1.29
     steps:
       - run: rustup default nightly
       - checkout
