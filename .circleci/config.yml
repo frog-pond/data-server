@@ -37,9 +37,13 @@ workflows:
   version: 2
   general:
     jobs:
-      - rustfmt
-      - test
-
+      - fetch-deps
+      - rustfmt:
+          requires: [ fetch-deps ]
+      - test:
+          requires: [ fetch-deps ]
+      - compile:
+          requires: [ rustfmt, test ]
 
 
 # TODO nightly after rust nightlies get published
