@@ -40,7 +40,7 @@ jobs:
             - ds-v1-docker--{{ arch }}-{{ checksum "Cargo.lock" }}-
             - ds-v1-docker--{{ arch }}-
       - run: cargo build
-      - run: cargo build --release
+
 
 workflows:
   version: 2
