@@ -30,10 +30,7 @@ jobs:
     docker: *rust_docker
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - ds-v1-docker--{{ arch }}-{{ .Branch }}-{{ epoch }}
-            - ds-v1-docker--{{ arch }}-{{ .Branch }}-
+      # No need for cache...
       - run: rustup component add rustfmt-preview --toolchain nightly
       - run: cargo fmt --all -- --check
 
