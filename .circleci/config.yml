@@ -7,21 +7,18 @@ jobs:
   fetch-deps:
     docker: *rust_docker
     steps:
-      - run: rustup default nightly
       - checkout
       - run: cargo fetch
 
   test:
     docker: *rust_docker
     steps:
-      - run: rustup default nightly
       - checkout
       - run: cargo test
 
   rustfmt:
     docker: *rust_docker
     steps:
-      - run: rustup default nightly
       - checkout
       - run: rustup component add rustfmt-preview --toolchain nightly
       - run: cargo fmt --all -- --check
@@ -29,7 +26,6 @@ jobs:
   compile:
     docker: *rust_docker
     steps:
-      - run: rustup default nightly
       - checkout
       - run: cargo build -j2 --release
 
