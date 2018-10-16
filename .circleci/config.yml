@@ -1,6 +1,6 @@
 ---
 x-defs:
-  default_docker: &rust_docker [{image: "circleci/rust:latest"}]
+  default_docker: &rust_docker [{image: "rustlang/rust:nightly"}]
 
 version: 2
 jobs:
