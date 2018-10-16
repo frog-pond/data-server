@@ -8,8 +8,13 @@ fn ping() -> &'static str {
 	"pong"
 }
 
-fn main() {
+
+fn rocket() -> rocket::Rocket {
 	rocket::ignite()
 		.mount("/", routes![ping])
+}
+
+fn main() {
+	rocket()
 		.launch();
 }
