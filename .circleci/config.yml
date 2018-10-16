@@ -5,6 +5,8 @@ jobs:
     docker:
       - image: circleci/rust
     steps:
-      - run: rustup nightly
+      - run: rustup default nightly
       - checkout
       - run: cargo build
+      - run: rustup component add rustfmt-preview --toolchain nightly
+      - run: rustfmt --all -- --check
