@@ -8,5 +8,6 @@ jobs:
       - run: rustup default nightly
       - checkout
       - run: cargo build
+      - run: cargo test
       - run: rustup component add rustfmt-preview --toolchain nightly
       - run: rustfmt --all -- --check
