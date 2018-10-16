@@ -9,7 +9,7 @@ jobs:
     steps:
       - checkout
       - run: cargo fetch
-      - run: cargo check
+      - run: cargo build --all
       - save_cache:
           key: ds-v1-docker--{{ arch }}-{{ .Branch }}-{{ epoch }}
           paths:
