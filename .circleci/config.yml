@@ -1,6 +1,6 @@
 ---
 x-defs:
-  default_docker: &rust_docker [{image: "rustlang/rust:nightly"}]
+  default_docker: &rust_docker [{image: "rustlang/rust:nightly-slim"}]
 
 version: 2
 jobs:
