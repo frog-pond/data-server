@@ -9,6 +9,7 @@ jobs:
     steps:
       - checkout
       - run: cargo fetch
+      - run: ls ~/.cargo/registry/src/*
       - save_cache:
           key: ds-v1-docker--{{ arch }}-{{ .Branch }}-{{ epoch }}
           paths:
