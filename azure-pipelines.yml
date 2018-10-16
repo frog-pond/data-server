@@ -3,4 +3,4 @@ pool:
 
 steps:
 - script: docker build .
-  displayName: 'Build the Docker image'
+  displayName: 'docker build'
