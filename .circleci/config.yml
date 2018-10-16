@@ -42,7 +42,7 @@ jobs:
       - run: cargo build
 
   docker-build:
-    docker: *rust_docker
+    docker: [{image: "docker:stable"}]
     steps:
       - checkout
       - restore_cache:
