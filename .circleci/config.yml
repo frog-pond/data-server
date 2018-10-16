@@ -42,7 +42,7 @@ jobs:
           keys:
             - ds-v1-docker--{{ arch }}-{{ .Branch }}-{{ epoch }}
             - ds-v1-docker--{{ arch }}-{{ .Branch }}-
-      - run: cargo build -j2 --release
+      - run: cargo build --release
 
 workflows:
   version: 2
