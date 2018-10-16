@@ -4,26 +4,16 @@ x-defs:
 
 version: 2
 jobs:
-  fetch-deps:
-    docker: *rust_docker
-    steps:
-      - checkout
-      - run: cargo fetch
-      - run: cargo build --all
-      - save_cache:
-          key: ds-v1-docker--{{ arch }}-{{ .Branch }}-{{ epoch }}
-          paths:
-            - "/usr/local/cargo"
-            - "./target"
-
   test:
     docker: *rust_docker
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - ds-v1-docker--{{ arch }}-{{ .Branch }}-{{ epoch }}
-            - ds-v1-docker--{{ arch }}-{{ .Branch }}-
+      - run: cargo fetch
+      - save_cache:
+          key: ds-v1-docker--{{ arch }}-{{ checksum "Cargo.lock" }}
+          paths:
+            - "/usr/local/cargo"
+            - "./target"
       - run: cargo test
 
   rustfmt:
@@ -40,21 +30,19 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - ds-v1-docker--{{ arch }}-{{ .Branch }}-{{ epoch }}
-            - ds-v1-docker--{{ arch }}-{{ .Branch }}-
+            - ds-v1-docker--{{ arch }}-{{ checksum "Cargo.lock" }}
+            - ds-v1-docker--{{ arch }}-
+      - run: cargo build
       - run: cargo build --release
 
 workflows:
   version: 2
   general:
     jobs:
-      - fetch-deps
-      - rustfmt:
-          requires: [ fetch-deps ]
-      - test:
-          requires: [ fetch-deps ]
+      - rustfmt
+      - test
       - compile:
-          requires: [ fetch-deps, rustfmt, test ]
+          requires: [ rustfmt, test ]
 
 
 # TODO nightly after rust nightlies get published
