@@ -8,6 +8,10 @@ jobs:
     docker: *rust_docker
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - ds-v1-docker--{{ arch }}-{{ checksum "Cargo.lock" }}
+            - ds-v1-docker--{{ arch }}-
       - run: cargo fetch
       - run: cargo build
       - save_cache:
