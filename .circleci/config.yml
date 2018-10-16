@@ -26,6 +26,12 @@ jobs:
       - run: rustup component add rustfmt-preview --toolchain nightly
       - run: cargo fmt --all -- --check
 
+  compile:
+    docker: *rust_docker
+    steps:
+      - run: rustup default nightly
+      - checkout
+      - run: cargo build -j8 --release
 
 workflows:
   version: 2
