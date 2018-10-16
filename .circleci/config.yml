@@ -41,6 +41,20 @@ jobs:
             - ds-v1-docker--{{ arch }}-
       - run: cargo build
 
+  docker-build:
+    docker: *rust_docker
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - ds-v1-docker--{{ arch }}-image-{{ .Revision }}
+            - ds-v1-docker--{{ arch }}-image
+      - run: docker build .
+      - run: docker save $(docker images --quiet --all) > /tmp/image.tar
+      - save_cache:
+          key: ds-v1-docker--{{ arch }}-image-{{ .Revision }}
+          paths:
+            - /tmp/image.tar
 
 workflows:
   version: 2
@@ -50,6 +64,8 @@ workflows:
       - test
       - compile:
           requires: [ rustfmt, test ]
+      - docker-build:
+          requires: [ compile ]
 
 
 # TODO nightly after rust nightlies get published
