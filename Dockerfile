@@ -3,7 +3,7 @@ FROM debian:9-slim AS base
 WORKDIR /data-server
 RUN apt update && apt install -qy ca-certificates openssl libssl-dev zlib1g-dev
 
-FROM rust-lang:nightly-slim AS rust-build-deps
+FROM rustlang/rust:nightly-slim AS rust-build-deps
 
 ADD Cargo.toml Cargo.lock /data-server/
 
