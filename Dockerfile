@@ -1,9 +1,12 @@
 FROM debian:9-slim AS base
 
-WORKDIR /data-server
-RUN apt update && apt install -qy ca-certificates openssl libssl-dev zlib1g-dev
+RUN apt update && apt install -qy ca-certificates openssl zlib1g
 
-FROM rustlang/rust:nightly-slim AS rust-build-deps
+FROM rustlang/rust:nightly-slim AS rust-build
+
+RUN apt update && apt install -qy libssl-dev openssl pkg-config zlib1g-dev
+
+WORKDIR /data-server
 
 ADD Cargo.toml Cargo.lock /data-server/
 
