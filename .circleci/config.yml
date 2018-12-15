@@ -10,13 +10,12 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - ds-v1-docker--{{ arch }}-{{ checksum "Cargo.lock" }}-{{ epoch }}
-            - ds-v1-docker--{{ arch }}-{{ checksum "Cargo.lock" }}-
+            - ds-v1-docker--{{ arch }}-{{ checksum "Cargo.lock" }}
             - ds-v1-docker--{{ arch }}-
       - run: cargo fetch
       - run: cargo build
       - save_cache:
-          key: ds-v1-docker--{{ arch }}-{{ checksum "Cargo.lock" }}-{{ epoch }}
+          key: ds-v1-docker--{{ arch }}-{{ checksum "Cargo.lock" }}
           paths:
             - "/usr/local/cargo"
             - "./target"
@@ -36,8 +35,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - ds-v1-docker--{{ arch }}-{{ checksum "Cargo.lock" }}-{{ epoch }}
-            - ds-v1-docker--{{ arch }}-{{ checksum "Cargo.lock" }}-
+            - ds-v1-docker--{{ arch }}-{{ checksum "Cargo.lock" }}
             - ds-v1-docker--{{ arch }}-
       - run: cargo build
 
