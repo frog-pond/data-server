@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "config:base",
+    ":semanticCommitsDisabled"
+  ],
+  "timezone": "America/Chicago",
+  "labels": [
+    "renovate"
+  ]
+}
