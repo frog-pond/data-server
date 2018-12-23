@@ -1,6 +1,6 @@
-#![feature(plugin)]
-#![plugin(rocket_codegen)]
+#![feature(proc_macro_hygiene, decl_macro)]
 
+#[macro_use]
 extern crate rocket;
 
 #[get("/ping")]
@@ -10,8 +10,8 @@ fn ping() -> &'static str {
 
 mod test {
 	use super::rocket;
-	use rocket::local::Client;
 	use rocket::http::Status;
+	use rocket::local::Client;
 
 	#[test]
 	fn ping_responds_with_pong() {
@@ -24,11 +24,9 @@ mod test {
 }
 
 fn rocket() -> rocket::Rocket {
-	rocket::ignite()
-		.mount("/", routes![ping])
+	rocket::ignite().mount("/", routes![ping])
 }
 
 fn main() {
-	rocket()
-		.launch();
+	rocket().launch();
 }
