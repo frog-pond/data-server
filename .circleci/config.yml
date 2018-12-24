@@ -63,8 +63,8 @@ jobs:
       - run:
           name: "Load from cache if present"
           command: test -r /tmp/image.tar && ( cat /tmp/image.tar | docker load ) || >&2 echo "No base image load"
-      - run: docker build --target base .
-      - run: docker build --target rust-build .
+      - run: docker build --target base --tag base .
+      - run: docker build --target rust-build --tag rust-build .
       - run:
           name: "Build image"
           command: docker build -t "${IMAGE}:${CIRCLE_SHA1}" .
