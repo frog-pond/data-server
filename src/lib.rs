@@ -3,10 +3,9 @@
 #[macro_use]
 extern crate rocket;
 
-#[get("/ping")]
-fn ping() -> &'static str {
-	"pong"
-}
+mod routes;
+
+use routes::*;
 
 pub fn server() -> rocket::Rocket {
 	rocket::ignite().mount("/", routes![ping])
