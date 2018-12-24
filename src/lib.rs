@@ -3,7 +3,7 @@
 #[macro_use]
 extern crate rocket;
 
-mod routes;
+pub mod routes;
 
 use routes::*;
 
