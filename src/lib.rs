@@ -9,6 +9,5 @@ fn ping() -> &'static str {
 }
 
 pub fn server() -> rocket::Rocket {
-	rocket::ignite()
-		.mount("/", routes![ping])
+	rocket::ignite().mount("/", routes![ping])
 }
