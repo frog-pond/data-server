@@ -65,6 +65,18 @@ jobs:
           paths:
             - /tmp/image.tar
 
+  deploy-docker:
+    docker: [{image: "docker:stable"}]
+    steps:
+      - setup_remote_docker
+      - checkout
+      - restore_cache:
+          keys:
+            - ds-v1-docker--{{ arch }}-image-{{ .Revision }}
+            - ds-v1-docker--{{ arch }}-image
+      - run: cat /tmp/image.tar | docker load
+      - run: docker images --all
+
 workflows:
   version: 2
   general:
@@ -77,7 +89,11 @@ workflows:
           requires: [ rustfmt, test ]
       - image:
           requires: [ rustfmt, test ]
-
+      - hold-for-approval:
+          type: approval
+          requires: [ image ]
+      - deploy-docker:
+          requires: [ hold-for-approval ]
 
 # TODO nightly after rust nightlies get published
 # e.g. 4am
