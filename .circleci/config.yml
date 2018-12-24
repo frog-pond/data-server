@@ -37,7 +37,7 @@ jobs:
           keys:
             - ds-v1-docker--{{ arch }}-{{ checksum "Cargo.lock" }}
             - ds-v1-docker--{{ arch }}-
-      - run: cargo build --all --debug
+      - run: cargo build --all
 
   release:
     docker: *rust_docker
