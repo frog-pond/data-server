@@ -51,6 +51,8 @@ jobs:
 
   image:
     docker: [{image: "docker:stable"}]
+    environment:
+      - IMAGE: frogpond/data-server
     steps:
       - setup_remote_docker
       - checkout
@@ -58,8 +60,12 @@ jobs:
           keys:
             - ds-v1-docker--{{ arch }}-image-{{ .Revision }}
             - ds-v1-docker--{{ arch }}-image
-      - run: docker build .
-      - run: docker save $(docker images --quiet --all) > /tmp/image.tar
+      - run: docker build --target base .
+      - run: docker build --target rust-build .
+      - run:
+          name: "Build image"
+          command: docker build -t "${IMAGE}:${CIRCLE_SHA1}" .
+      - run: docker save "${IMAGE}:${CIRCLE_SHA1}" > /tmp/image.tar
       - save_cache:
           key: ds-v1-docker--{{ arch }}-image-{{ .Revision }}
           paths:
@@ -67,6 +73,8 @@ jobs:
 
   deploy-docker:
     docker: [{image: "docker:stable"}]
+    environment:
+      - IMAGE: frogpond/data-server
     steps:
       - setup_remote_docker
       - checkout
@@ -75,7 +83,7 @@ jobs:
             - ds-v1-docker--{{ arch }}-image-{{ .Revision }}
             - ds-v1-docker--{{ arch }}-image
       - run: cat /tmp/image.tar | docker load
-      - run: docker images --all
+      - run: docker images -a
 
 workflows:
   version: 2
