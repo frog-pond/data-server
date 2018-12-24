@@ -29,7 +29,7 @@ jobs:
       - run: rustup component add rustfmt-preview --toolchain nightly
       - run: cargo fmt --all -- --check
 
-  compile:
+  release:
     docker: *rust_docker
     steps:
       - checkout
@@ -37,9 +37,9 @@ jobs:
           keys:
             - ds-v1-docker--{{ arch }}-{{ checksum "Cargo.lock" }}
             - ds-v1-docker--{{ arch }}-
-      - run: cargo build
+      - run: cargo build --all --release
 
-  docker-build:
+  image:
     docker: [{image: "docker:stable"}]
     steps:
       - setup_remote_docker
@@ -61,10 +61,10 @@ workflows:
     jobs:
       - rustfmt
       - test
-      - compile:
+      - release:
           requires: [ rustfmt, test ]
-      - docker-build:
-          requires: [ compile ]
+      - image:
+          requires: [ rustfmt, test ]
 
 
 # TODO nightly after rust nightlies get published
