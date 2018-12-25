@@ -86,7 +86,7 @@ jobs:
             - ds-v1-docker--{{ arch }}-image-{{ .Revision }}
             - ds-v1-docker--{{ arch }}-image
       - run: cat /tmp/image.tar | docker load
-      - run: docker images -a -q
+      - run: docker images -a
 
 workflows:
   version: 2
