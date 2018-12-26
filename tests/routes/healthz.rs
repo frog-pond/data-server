@@ -8,5 +8,8 @@ fn responds_with_correct_headers() {
 
 	assert_eq!(response.status(), Status::Ok);
 	assert!(response.headers().contains("Content-Type"));
-	assert_eq!(response.headers().get_one("Content-Type"), Some("application/json"));
+	assert_eq!(
+		response.headers().get_one("Content-Type"),
+		Some("application/json")
+	);
 }
