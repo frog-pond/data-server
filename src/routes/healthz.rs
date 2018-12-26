@@ -1,6 +1,6 @@
-use std::io::Cursor;
-use rocket::response::{Response, Result};
 use rocket::http::ContentType;
+use rocket::response::{Response, Result};
+use std::io::Cursor;
 
 #[derive(Serialize)]
 pub struct Health {
