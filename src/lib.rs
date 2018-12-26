@@ -7,6 +7,14 @@ pub mod routes;
 
 use routes::*;
 
+/// Prepares a rocket::Rocket for usage.
+///
+/// # Examples
+///
+/// ```
+/// use data_server::*;
+/// let rocket: rocket::Rocket = server();
+/// ```
 pub fn server() -> rocket::Rocket {
 	rocket::ignite().mount("/", routes![ping])
 }
