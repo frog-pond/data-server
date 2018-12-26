@@ -5,4 +5,5 @@ use rocket::local::Client;
 
 use data_server::routes::*;
 
+mod healthz;
 mod ping;
