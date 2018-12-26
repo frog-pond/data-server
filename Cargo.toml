@@ -1,5 +1,6 @@
 [package]
 name = "data_server"
+edition = '2018'
 publish = false
 version = "0.0.0-alpha.0"
 
