@@ -4,7 +4,7 @@ use std::io::Cursor;
 
 #[derive(Serialize)]
 pub struct Health {
-	code: bool
+	code: bool,
 }
 
 pub fn get_health() -> Health {
