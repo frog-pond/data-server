@@ -4,4 +4,8 @@
 extern crate rocket;
 extern crate data_server;
 
+#[cfg(test)]
+extern crate mocktopus;
+
+// Add a `mod` for each test directory with a mod.rs in it.
 mod routes;

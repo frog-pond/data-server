@@ -2,9 +2,9 @@ use rocket::http::ContentType;
 use rocket::response::{Response, Result};
 use std::io::Cursor;
 
-#[derive(Serialize)]
+#[derive(Serialize, Deserialize)]
 pub struct Health {
-	code: bool,
+	pub code: bool,
 }
 
 pub fn get_health() -> Health {

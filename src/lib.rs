@@ -1,4 +1,4 @@
-#![feature(decl_macro, proc_macro_hygiene, uniform_paths)]
+#![feature(custom_attribute, decl_macro, proc_macro_hygiene, uniform_paths)]
 
 #[macro_use]
 extern crate rocket;
@@ -6,9 +6,11 @@ extern crate rocket;
 #[macro_use]
 extern crate serde_derive;
 
-pub mod routes;
+#[cfg(test)]
+extern crate mocktopus;
 
-use routes::*;
+#[cfg_attr(test, mockable)]
+pub mod routes;
 
 /// Prepares a rocket::Rocket for usage.
 ///
@@ -19,5 +21,5 @@ use routes::*;
 /// let rocket: rocket::Rocket = server();
 /// ```
 pub fn server() -> rocket::Rocket {
-	rocket::ignite().mount("/", routes![healthz, ping])
+	rocket::ignite().mount("/", routes![routes::healthz::healthz, routes::ping::ping])
 }

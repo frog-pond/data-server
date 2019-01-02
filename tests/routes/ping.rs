@@ -1,5 +1,7 @@
 use super::*;
 
+use data_server::routes::ping::*;
+
 #[test]
 fn responds_with_pong() {
 	let rocket = rocket::ignite().mount("/", routes![ping]);
