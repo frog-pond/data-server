@@ -5,8 +5,7 @@ use data_server::routes::healthz::*;
 
 #[test]
 fn when_healthy_responds_healthily() {
-	use data_server::routes::healthz::Health;
-	data_server::routes::healthz::get_health.mock_safe(|| MockResult::Return(Health { code: true }));
+	routes::healthz::get_health.mock_safe(|| MockResult::Return(Health { code: true }));
 
 	let rocket = rocket::ignite().mount("/", routes![healthz]);
 	let client = Client::new(rocket).expect("valid rocket instance");
