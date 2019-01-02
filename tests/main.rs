@@ -4,4 +4,7 @@
 extern crate rocket;
 extern crate data_server;
 
+#[cfg(test)]
+extern crate mocktopus;
+
 mod routes;
