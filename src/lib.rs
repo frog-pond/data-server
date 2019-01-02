@@ -12,8 +12,6 @@ extern crate mocktopus;
 #[cfg_attr(test, mockable)]
 pub mod routes;
 
-use routes::*;
-
 /// Prepares a rocket::Rocket for usage.
 ///
 /// # Examples
@@ -23,5 +21,5 @@ use routes::*;
 /// let rocket: rocket::Rocket = server();
 /// ```
 pub fn server() -> rocket::Rocket {
-	rocket::ignite().mount("/", routes![healthz, ping])
+	rocket::ignite().mount("/", routes![routes::healthz::healthz, routes::ping::ping])
 }
