@@ -1,5 +1,7 @@
 use super::*;
 
+use data_server::routes::healthz::*;
+
 #[test]
 fn responds_with_correct_headers() {
 	let rocket = rocket::ignite().mount("/", routes![healthz]);
