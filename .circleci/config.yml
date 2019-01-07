@@ -29,6 +29,14 @@ jobs:
       - run: rustup component add rustfmt-preview --toolchain nightly
       - run: cargo fmt --all -- --check
 
+  clippy:
+    docker: *rust_docker
+    steps:
+      - checkout
+      # No need for cache...
+      - run: rustup component add clippy --toolchain=nightly || cargo install --git ssh://git@github.com/rust-lang/rust-clippy.git --force clippy
+      - run: cargo clippy
+
   compile:
     docker: *rust_docker
     steps:
@@ -60,9 +68,10 @@ workflows:
   general:
     jobs:
       - rustfmt
+      - clippy
       - test
       - compile:
-          requires: [ rustfmt, test ]
+          requires: [ rustfmt, test, clippy ]
       - docker-build:
           requires: [ compile ]
 
