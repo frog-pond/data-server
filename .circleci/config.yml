@@ -35,7 +35,7 @@ jobs:
       - checkout
       # No need for cache...
       - run: rustup component add clippy --toolchain=nightly || cargo install --git ssh://git@github.com/rust-lang/rust-clippy.git --force clippy
-      - run: cargo clippy
+      - run: cargo clippy --all-targets --all-features -- -D warnings
 
   compile:
     docker: *rust_docker
