@@ -9,7 +9,6 @@ extern crate serde_derive;
 #[cfg(test)]
 extern crate mocktopus;
 
-#[cfg_attr(test, mockable)]
 pub mod routes;
 
 /// Prepares a rocket::Rocket for usage.
