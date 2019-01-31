@@ -71,7 +71,7 @@ workflows:
       - clippy
       - test
       - compile:
-          requires: [ rustfmt, test, clippy ]
+          requires: [ rustfmt, test ]
       - docker-build:
           requires: [ compile ]
 
