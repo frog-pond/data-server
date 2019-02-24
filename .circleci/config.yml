@@ -27,7 +27,7 @@ jobs:
       - checkout
       # No need for cache...
       - run: rustup component add rustfmt --toolchain nightly || cargo install --git ssh://git@github.com/rust-lang/rustfmt.git --force rustfmt-nightly
-      - run: cargo fmt --all -- --check
+      - run: cargo fmt --verbose --all -- --check
 
   clippy:
     docker: *rust_docker
@@ -35,7 +35,7 @@ jobs:
       - checkout
       # No need for cache...
       - run: rustup component add clippy --toolchain=nightly || cargo install --git ssh://git@github.com/rust-lang/rust-clippy.git --force clippy
-      - run: cargo clippy --all-targets --all-features -- -D warnings
+      - run: cargo clippy --verbose --all-targets --all-features -- -D warnings
 
   compile:
     docker: *rust_docker
