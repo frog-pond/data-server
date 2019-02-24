@@ -11,10 +11,7 @@ serde_derive = "1.0"
 serde_json = "1.0"
 
 [dev-dependencies]
-mocktopus = "0.5"
-
-[patch.crates-io]
-mocktopus = { git = "https://github.com/rye/Mocktopus" }
+mocktopus = "0.6"
 
 [lib]
 path = "src/lib.rs"
