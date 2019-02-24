@@ -11,7 +11,7 @@ extern crate mocktopus;
 
 pub mod routes;
 
-/// Prepares a rocket::Rocket for usage.
+/// Prepares a `rocket::Rocket` for usage.
 ///
 /// # Examples
 ///
