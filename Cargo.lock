@@ -52,7 +52,7 @@ dependencies = [
 name = "data_server"
 version = "0.0.0-alpha.0"
 dependencies = [
- "mocktopus 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "mocktopus 0.7.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "rocket 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde 1.0.89 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde_derive 1.0.89 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -193,15 +193,15 @@ dependencies = [
 
 [[package]]
 name = "mocktopus"
-version = "0.6.0"
+version = "0.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
- "mocktopus_macros 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "mocktopus_macros 0.7.0 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
 name = "mocktopus_macros"
-version = "0.6.0"
+version = "0.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "proc-macro2 0.4.27 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -519,8 +519,8 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 "checksum matches 0.1.8 (registry+https://github.com/rust-lang/crates.io-index)" = "7ffc5c5338469d4d3ea17d269fa8ea3512ad247247c30bd2df69e68309ed0a08"
 "checksum memchr 2.2.0 (registry+https://github.com/rust-lang/crates.io-index)" = "2efc7bc57c883d4a4d6e3246905283d8dae951bb3bd32f49d6ef297f546e1c39"
 "checksum mime 0.2.6 (registry+https://github.com/rust-lang/crates.io-index)" = "ba626b8a6de5da682e1caa06bdb42a335aee5a84db8e5046a3e8ab17ba0a3ae0"
-"checksum mocktopus 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)" = "f44c1c0a8b506aa0ff1f3fce618929bd8b09b00596fae7a973ebad1848544c4d"
-"checksum mocktopus_macros 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)" = "77f34f37caa604f8fc714e33da267ffe191e9a6b0536c27c3b35dc87c2d4e169"
+"checksum mocktopus 0.7.0 (registry+https://github.com/rust-lang/crates.io-index)" = "7ac626c2131380faf8b0f3bd5ef0777d62bd6ee8e1bb569d0b8ff3eb117f4ec8"
+"checksum mocktopus_macros 0.7.0 (registry+https://github.com/rust-lang/crates.io-index)" = "d540fdaa01cc3c5fbdb9794c2973da7f3050433938ef78758a889885cf0a61d0"
 "checksum num_cpus 1.10.0 (registry+https://github.com/rust-lang/crates.io-index)" = "1a23f0ed30a54abaa0c7e83b1d2d87ada7c3c23078d1d87815af3e3b6385fbba"
 "checksum pear 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)" = "c26d2b92e47063ffce70d3e3b1bd097af121a9e0db07ca38a6cc1cf0cc85ff25"
 "checksum pear_codegen 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)" = "336db4a192cc7f54efeb0c4e11a9245394824cc3bcbd37ba3ff51240c35d7a6e"
