@@ -33,7 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        rust: [stable]
+        rust: [nightly]
     steps:
     - name: Install the appropriate Rust toolchain
       run: |
