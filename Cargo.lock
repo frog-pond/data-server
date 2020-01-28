@@ -49,7 +49,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "cookie"
-version = "0.11.0"
+version = "0.11.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "base64 0.9.3 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -323,7 +323,7 @@ name = "rocket_http"
 version = "0.4.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
- "cookie 0.11.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "cookie 0.11.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "hyper 0.10.15 (registry+https://github.com/rust-lang/crates.io-index)",
  "indexmap 1.0.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "pear 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -522,7 +522,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 "checksum byteorder 1.3.1 (registry+https://github.com/rust-lang/crates.io-index)" = "a019b10a2a7cdeb292db131fc8113e57ea2a908f6e7894b0c3c671893b65dbeb"
 "checksum cc 1.0.30 (registry+https://github.com/rust-lang/crates.io-index)" = "d01c69d08ff207f231f07196e30f84c70f1c815b04f980f8b7b01ff01f05eb92"
 "checksum cfg-if 0.1.7 (registry+https://github.com/rust-lang/crates.io-index)" = "11d43355396e872eefb45ce6342e4374ed7bc2b3a502d1b28e36d6e23c05d1f4"
-"checksum cookie 0.11.0 (registry+https://github.com/rust-lang/crates.io-index)" = "1465f8134efa296b4c19db34d909637cb2bf0f7aaf21299e23e18fa29ac557cf"
+"checksum cookie 0.11.2 (registry+https://github.com/rust-lang/crates.io-index)" = "d9fac5e7bdefb6160fb181ee0eaa6f96704b625c70e6d61c465cb35750a4ea12"
 "checksum devise 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)" = "74e04ba2d03c5fa0d954c061fc8c9c288badadffc272ebb87679a89846de3ed3"
 "checksum devise_codegen 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)" = "066ceb7928ca93a9bedc6d0e612a8a0424048b0ab1f75971b203d01420c055d7"
 "checksum devise_core 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)" = "cf41c59b22b5e3ec0ea55c7847e5f358d340f3a8d6d53a5cf4f1564967f96487"
